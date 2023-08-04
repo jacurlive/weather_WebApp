@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>Weather</title>
+</head>
+
+<body id="swipe">
+    <div class="weather left" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)">
+        <div class="header">
+            <span onclick="handleLeftClick()"></span>
+            <span onclick="handleRightClick()"></span>
+        </div>
+        <div class="hidden">
+            <div class="animation today-tomorrow">
+                <div class="card today front">
+                    <div class="location">
+                        <!-- например -->
+                        <h1>Uzbekistan <br> Tashkent</h1>
+                        <!-- дата правильная я её уже сделал -->
+                        <h6 id="data">Tue, Jun 30</h6>
+                    </div>
+                    <div class="img-and-degree">
+                        <div class="img-one">
+                            <!-- нужно поменять название ссылки взависимости от погоды -->
+
+                            <!-- пассмурное солнце -->
+<!--                             <img src="{% static 'media/cloudy-sun.svg' %}" alt="">-->
+                            <!-- пассмурная погода -->
+<!--                             <img src="{% static 'media/cloudy.svg' %}" alt="">-->
+                            <!-- дождь-->
+<!--                             <img src="{% static 'media/rain.svg' %}" alt="">-->
+                            <!-- солнечный дождь-->
+<!--                             <img src="{% static 'media/rain-sun.svg' %}" alt="">-->
+                            <!-- ясное солнце -->
+                            <img src="{% static 'media/sun.svg' %}" alt="">
+                        </div>
+                        <div class="degree-holder">
+                            <div class="degree">
+                                <!-- сколько градусов прямо сейчас-->
+                                <h2 class="degree-in-realtime">{{ temp_c }}</h2>
+                                <!-- какая погода прямо сейчас -->
+                                <h3>{{ condition }}</h3>
+                            </div>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                    <div class="cards-row">
+<!--                        <div class="row">-->
+<!--                            <div class="row-left">-->
+<!--                                <div class="img-two">-->
+<!--                                    <img src="{% static 'media/umbrella.svg' %}" alt="">-->
+<!--                                </div>-->
+<!--                                <span>RainFall</span>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; количество осадков на сегодня &ndash;&gt;-->
+<!--                            <div class="row-right rainFall">-->
+<!--                                3cm-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="row">
+                            <div class="row-left">
+                                <div class="img-two">
+                                    <img src="{% static 'media/wind.svg' %}" alt="">
+                                </div>
+                                <span>Wind</span>
+                            </div>
+                            <!-- скорость ветра на сегодня -->
+                            <div class="row-right Wind">
+                                {{ wind_kph }} km/h
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-left">
+                                <div class="img-two">
+                                    <img class="two" src="{% static 'media/Humidity.svg' %}" alt="">
+                                </div>
+                                <span>Humidity</span>
+                            </div>
+                            <!-- вероятность дождя на сегодня -->
+                            <div class="row-right Humidity">
+                                {{ humidity }} %
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card tomorrow back">
+                    <div class="location">
+                        <!-- например -->
+                        <h1>Uzbekistan <br> Tashkent</h1>
+                        <!-- дата правильная я её уже сделал -->
+                        <h6 id="data-tomorrow">Tue, Jun 30</h6>
+                    </div>
+                    <div class="img-and-degree">
+                        <div class="img-one">
+                            <!-- нужно поменять название ссылки взависимости от погоды -->
+                            <!-- пассмурное солнце -->
+                            <!-- <img src="media/cloudy-sun.svg" alt=""> -->
+                            <!-- пассмурная погода -->
+                            <!-- <img src="media/cloudy.svg" alt=""> -->
+                            <!-- дождь-->
+                            <!-- <img src="media/rain.svg" alt=""> -->
+                            <!-- солнечный дождь-->
+                            <!-- <img src="media/rain-sun.svg" alt=""> -->
+                            <!-- ясное солнце -->
+                            <img src="{% static 'media/sun.svg' %}" alt="">
+                        </div>
+                        <div class="degree-holder">
+                            <div class="degree">
+                                <!-- сколько градусов завтра-->
+                                <h2 class="degree-in-realtime">{{ next_temp }}</h2>
+                                <!-- какая погода завтра -->
+                                <h3>"{{ next_condition }}"</h3>
+                            </div>
+                            <span>°C</span>
+                        </div>
+                    </div>
+                    <div class="cards-row">
+<!--                        <div class="row">-->
+<!--                            <div class="row-left">-->
+<!--                                <div class="img-two">-->
+<!--                                    <img src="{% static 'media/umbrella.svg' %}" alt="">-->
+<!--                                </div>-->
+<!--                                <span>RainFall</span>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; количество осадков на затвра &ndash;&gt;-->
+<!--                            <div class="row-right rainFall">-->
+<!--                                2cm-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="row">
+                            <div class="row-left">
+                                <div class="img-two">
+                                    <img src="{% static 'media/wind.svg' %}" alt="">
+                                </div>
+                                <span>Wind</span>
+                            </div>
+                            <!-- скорость ветра на завтра -->
+                            <div class="row-right Wind">
+                                {{ next_wind }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-left">
+                                <div class="img-two">
+                                    <img class="two" src="{% static 'media/Humidity.svg' %}" alt="">
+                                </div>
+                                <span>Humidity</span>
+                            </div>
+                            <!-- вероятность дождя на завтра -->
+                            <div class="row-right Humidity">
+                                {{ next_wind }} %
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-title">
+                <div class="row-title">
+                    <div class="left">
+                        <span onclick="handleLeftClick()">Today</span>
+                        <span onclick="handleRightClick()">Tomorrow</span>
+                    </div>
+                    <div class="right">
+<!--                        <span>Next 7 Days</span>-->
+<!--                        <span>></span>-->
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script rel="text/javascript" src="{% static 'js/left-right.js' %}"></script>
+</body>
+
+</html>
