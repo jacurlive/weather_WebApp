@@ -1,7 +1,11 @@
+from dotenv import load_dotenv
+import os
 import json
 import requests
 
-token = 'YOUR TOKEN'
+load_dotenv()
+
+token = os.environ.get('TOKEN')
 
 weather_url_1 = requests.get(
     f'http://api.weatherapi.com/v1/current.json?key={token}&q=Tashkent&aqi=no')

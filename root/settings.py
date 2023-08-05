@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # apps
     'weather',
+
+    # installed
+    'dotenv',
 ]
 
 MIDDLEWARE = [
