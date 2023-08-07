@@ -23,8 +23,6 @@ res = json.loads(json_str)
 
 
 def get_temp():
-    # return json.dumps(json_response, indent=4)
-
     return json.dumps(json_response['current'].get('temp_c'), indent=4)
 
 
@@ -66,6 +64,3 @@ def get_next_condition():
 
 def get_next_icon():
     return res['day']['condition']['icon']
-
-
-print(get_next_icon())
