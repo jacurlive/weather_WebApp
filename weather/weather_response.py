@@ -13,7 +13,7 @@ weather_url_1 = requests.get(
 json_response = weather_url_1.json()
 
 weather_url_2 = requests.get(
-     f'http://api.weatherapi.com/v1/forecast.json?key={token}&q=Tashkent&days=2&aqi=no&alerts=no')
+    f'http://api.weatherapi.com/v1/forecast.json?key={token}&q=Tashkent&days=2&aqi=no&alerts=no')
 
 response = weather_url_2.json()
 
@@ -44,6 +44,10 @@ def get_humidity():
     return json.dumps(json_response['current'].get('humidity'))
 
 
+def get_icon():
+    return json.dumps(json_response['current']['condition']['icon'])
+
+
 def get_next_temp():
     return res['day']['avgtemp_c']
 
@@ -58,3 +62,10 @@ def get_next_humidity():
 
 def get_next_condition():
     return res['day']['condition']['text']
+
+
+def get_next_icon():
+    return res['day']['condition']['icon']
+
+
+print(get_next_icon())

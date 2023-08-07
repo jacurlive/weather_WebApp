@@ -31,18 +31,25 @@
                     </div>
                     <div class="img-and-degree">
                         <div class="img-one">
+
+                            <img src="https:{{ weather_icon }}" alt="icon">
+
+
                             <!-- нужно поменять название ссылки взависимости от погоды -->
 
-                            <!-- пассмурное солнце -->
-<!--                             <img src="{% static 'media/cloudy-sun.svg' %}" alt="">-->
-                            <!-- пассмурная погода -->
-<!--                             <img src="{% static 'media/cloudy.svg' %}" alt="">-->
-                            <!-- дождь-->
-<!--                             <img src="{% static 'media/rain.svg' %}" alt="">-->
-                            <!-- солнечный дождь-->
-<!--                             <img src="{% static 'media/rain-sun.svg' %}" alt="">-->
-                            <!-- ясное солнце -->
-                            <img src="{% static 'media/sun.svg' %}" alt="">
+                                <!-- пассмурное солнце -->
+<!--                            {% if condition == '"Partly cloudy"' %}-->
+<!--                                <img src="{% static 'media/cloudy-sun.svg' %}" alt="">-->
+<!--                            {% else %}-->
+<!--                                <img src="{% static 'media/sun.svg' %}" alt="">-->
+<!--                            {% endif %}-->
+                                <!-- пассмурная погода -->
+                                <!--<img src="{% static 'media/cloudy.svg' %}" alt="">-->
+                                <!-- дождь-->
+                                <!--<img src="{% static 'media/rain.svg' %}" alt="">-->
+                                <!-- солнечный дождь-->
+                                <!--<img src="{% static 'media/rain-sun.svg' %}" alt="">-->
+                                <!-- ясное солнце -->
                         </div>
                         <div class="degree-holder">
                             <div class="degree">
@@ -102,17 +109,23 @@
                     </div>
                     <div class="img-and-degree">
                         <div class="img-one">
+
+                            <img src="https:{{ next_icon }}" alt="icon">
+
                             <!-- нужно поменять название ссылки взависимости от погоды -->
                             <!-- пассмурное солнце -->
-                            <!-- <img src="media/cloudy-sun.svg" alt=""> -->
+<!--                            {% if condition == '"Sunny"' %}-->
+<!--                                <img src="media/cloudy-sun.svg" alt="">-->
+<!--                            {% else %}-->
+<!--                                <img src="{% static 'media/sun.svg' %}" alt="">-->
+<!--                            {% endif %}-->
+
                             <!-- пассмурная погода -->
                             <!-- <img src="media/cloudy.svg" alt=""> -->
                             <!-- дождь-->
                             <!-- <img src="media/rain.svg" alt=""> -->
                             <!-- солнечный дождь-->
                             <!-- <img src="media/rain-sun.svg" alt=""> -->
-                            <!-- ясное солнце -->
-                            <img src="{% static 'media/sun.svg' %}" alt="">
                         </div>
                         <div class="degree-holder">
                             <div class="degree">
